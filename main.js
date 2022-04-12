@@ -10,7 +10,8 @@ function get_data_class (url, success, error) {
 
                 success(xhr.response);
             } else if (xhr.status === 404) {
-                error();
+                
+                error(xhr.status);
             }
         }
     }
@@ -21,8 +22,8 @@ function get_data_class (url, success, error) {
 }
 
 console.log('start');
-get_data_class('main.json',
+get_data_class('mains.json',
     (results) => {console.log(JSON.parse(results));}, 
-    () => {}
+    (e) => {console.log(e)}
 );
 console.log('end');
